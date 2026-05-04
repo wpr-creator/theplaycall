@@ -47,6 +47,19 @@ body{
     repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(196,136,10,0.06) 40px);
   pointer-events:none;
 }
+.masthead::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to right, rgba(15,14,12,0.95) 0%, rgba(15,14,12,0.7) 45%, rgba(15,14,12,0.95) 100%),
+    url("images/uncle_sam_play.jpg");
+  background-size:cover;
+  background-position:center;
+  opacity:0.35;
+  z-index:0;
+  filter:grayscale(20%) contrast(105%) brightness(85%);
+}
 .masthead-inner{
   position:relative;
   z-index:2;
