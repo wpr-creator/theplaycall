@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--ink:#1a1208;
+--paper:#f5f0e8;
+--sepia:#8b6914;
+--rust:#b8390e;
+--cream:#faf7f0;
+--mid:#6b5a3e;
+--light:#e8dfc8;
+--accent:#c4880a;
+}
+body{background:var(--paper);color:var(--ink);font-family:'Source Serif 4',serif;font-size:17px;line-height:1.75}
+
+/* MASTHEAD */
+.masthead{background:var(--ink);color:var(--cream);padding:0;overflow:hidden;position:relative}
+.masthead-inner{display:grid;grid-template-columns:1fr 1fr;min-height:520px}
+.masthead-text{padding:3rem 3rem 3rem 3.5rem;display:flex;flex-direction:column;justify-content:center;z-index:2}
+.kicker{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;opacity:0.9}
+.masthead h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5vw,4.2rem);font-weight:900;line-height:1.05;color:var(--cream);margin-bottom:1.2rem}
+.masthead h1 span{color:var(--accent)}
+.masthead-sub{font-size:1.05rem;line-height:1.65;color:rgba(250,247,240,0.8);font-style:italic;max-width:400px}
+.masthead-img{position:relative;overflow:hidden}
+.masthead-img img{width:100%;height:100%;object-fit:cover;filter:sepia(40%) contrast(1.1);opacity:0.85}
+.masthead-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--ink) 0%,transparent 35%)}
+.dateline{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;color:var(--accent);margin-top:1.5rem;opacity:0.7}
+
+/* RULE */
+.rule{height:4px;background:var(--rust);margin:0}
+.rule-thin{height:1px;background:var(--light);margin:2rem 0}
+
+/* MAIN LAYOUT */
+.container{max-width:900px;margin:0 auto;padding:2.5rem 2rem}
+
+/* SECTION HEADS */
+.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--sepia);margin-bottom:0.6rem}
+h2{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--ink);margin-bottom:1rem;line-height:1.2}
+h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--rust);margin-bottom:0.5rem}
+
+/* PULL QUOTE */
+.pull-quote{border-left:4px solid var(--rust);padding:1rem 1.5rem;margin:2rem 0;background:var(--cream)}
+.pull-quote p{font-family:'Playfair Display',serif;font-size:1.25rem;font-style:italic;color:var(--ink);line-height:1.5}
+.pull-quote cite{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--mid);display:block;margin-top:0.5rem}
+
+/* PHOTO GRID */
+.photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}
+.photo-grid.three{grid-template-columns:1fr 1fr 1fr}
+.photo-item img{width:100%;height:200px;object-fit:cover;filter:sepia(30%) contrast(1.05);display:block}
+.photo-item.tall img{height:280px}
+.photo-caption{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.05em;color:var(--mid);padding:0.4rem 0;line-height:1.4;background:var(--cream);padding:0.4rem 0.5rem}
+
+/* SEEN/UNSEEN */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0}
+.col-seen{background:var(--cream);border-top:3px solid var(--accent);padding:1.25rem 1.5rem}
+.col-unseen{background:#1a1208;border-top:3px solid var(--rust);padding:1.25rem 1.5rem;color:var(--cream)}
+.col-unseen h3{color:var(--accent)}
+.col-unseen p{color:rgba(250,247,240,0.85);font-size:0.95rem}
+.col-seen p{font-size:0.95rem}
+
+/* CARTOON */
+.cartoon-box{background:var(--cream);border:1px solid var(--light);padding:1.25rem;margin:2rem 0}
+.cartoon-box img{width:100%;max-height:350px;object-fit:contain;filter:sepia(20%)}
+.cartoon-caption{font-family:'DM Mono',monospace;font-size:10px;color:var(--mid);margin-top:0.6rem;line-height:1.4}
+
+/* VOCAB */
+.vocab-strip{background:var(--ink);color:var(--cream);padding:1.75rem 2rem;margin-top:2rem}
+.vocab-strip .section-label{color:var(--accent)}
+.vocab-strip h2{color:var(--cream);font-size:1.3rem;margin-bottom:1.25rem}
+.vocab-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+.vocab-item{border-left:2px solid var(--accent);padding-left:0.75rem}
+.vocab-term{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent)}
+.vocab-def{font-size:0.88rem;color:rgba(250,247,240,0.8);margin-top:0.2rem;line-height:1.5}
+
+/* STAT CALLOUTS */
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0}
+.stat-box{background:var(--cream);border-top:3px solid var(--rust);padding:1rem;text-align:center}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--rust);line-height:1}
+.stat-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--mid);margin-top:0.3rem;line-height:1.4}
+
+p{margin-bottom:1rem}
+.lede{font-size:1.12rem;font-weight:300;color:var(--mid);margin-bottom:1.25rem;line-height:1.7}
+
+@media(max-width:650px){
+  .masthead-inner{grid-template-columns:1fr}
+  .masthead-img{display:none}
+  .two-col,.photo-grid,.photo-grid.three,.stat-row,.vocab-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-text">
+      <div class="kicker">The Play Call — Event 1 of 4</div>
+      <h1>The <span>New Deal</span></h1>
+      <p class="masthead-sub">When 25 percent of Americans had no work, no money, and no clear way forward — the government made its biggest bet in history.</p>
+      <div class="dateline">United States · 1933–1938 · Expansionary Fiscal Policy</div>
+    </div>
+    <div class="masthead-img">
+      <img src="images/migrant_mother.jpg" alt="Dorothea Lange's Migrant Mother photograph 1936">
+    </div>
+  </div>
+</div>
+<div class="rule"></div>
+
+<div class="container">
+
+  <div class="section-label">The Setup</div>
+  <h2>The Country Had Collapsed</h2>
+  <p class="lede">By 1933, one in four Americans was unemployed. Banks had failed. Farms had been abandoned. Families were living in shacks built from scrap metal and cardboard.</p>
+  <p>It did not happen overnight. The stock market crashed in October 1929. Banks followed. When banks failed, the savings of ordinary families disappeared overnight — not because they had done anything wrong, but because the system they trusted collapsed around them. By the time Franklin Roosevelt became president in March 1933, the national economy had been shrinking for four straight years.</p>
+  <p>Roosevelt inherited an emergency. And he responded with a plan unlike anything the federal government had ever attempted.</p>
+
+  <div class="pull-quote">
+    <p>"The only thing we have to fear is fear itself."</p>
+    <cite>— Franklin D. Roosevelt, First Inaugural Address, March 4, 1933</cite>
+  </div>
+
+  <div class="photo-grid">
+    <div class="photo-item tall">
+      <img src="images/soup_kitchen.jpg" alt="Men in line at a Chicago soup kitchen 1931">
+      <div class="photo-caption">Men line up at a Chicago soup kitchen, 1931. Many waited hours for a single meal.</div>
+    </div>
+    <div class="photo-item tall">
+      <img src="images/dust_storm.jpg" alt="Dust storm approaching Stratford Texas 1935">
+      <div class="photo-caption">A dust storm swallows a town in Oklahoma, 1935. Farms across the Great Plains were destroyed by drought and poor land management.</div>
+    </div>
+  </div>
+
+  <div class="rule-thin"></div>
+
+  <div class="section-label">The Intervention</div>
+  <h2>The Government Steps In — Massively</h2>
+  <p>Roosevelt's New Deal was not one program. It was dozens of programs launched in rapid succession, designed to do three things at once — provide immediate relief to families who had nothing, create jobs on a national scale, and reform the financial system so this could never happen again.</p>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <div class="stat-num">25%</div>
+      <div class="stat-label">Unemployment rate when Roosevelt took office</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">3M+</div>
+      <div class="stat-label">Americans put to work by the CCC and WPA</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">$41B</div>
+      <div class="stat-label">Total New Deal spending — equivalent to roughly $900 billion today</div>
+    </div>
+  </div>
+
+  <p>The Civilian Conservation Corps — the CCC — hired young men from unemployed families to plant trees, build trails, and restore national parks. The Works Progress Administration — the WPA — hired writers, painters, architects, and construction workers to build public schools, post offices, murals, and roads. These were not charity programs. They were paychecks. And those paychecks moved through communities that had stopped spending entirely.</p>
+
+  <div class="photo-grid three">
+    <div class="photo-item">
+      <img src="images/ccc_workers.jpg" alt="CCC workers in the field">
+      <div class="photo-caption">Civilian Conservation Corps workers, 1930s. The CCC employed over 3 million young men.</div>
+    </div>
+    <div class="photo-item">
+      <img src="images/wpa_education.jpg" alt="WPA poster for adult education">
+      <div class="photo-caption">WPA poster promoting adult education classes. The WPA also funded artists and writers.</div>
+    </div>
+    <div class="photo-item">
+      <img src="images/wpa_art.jpg" alt="WPA Federal Art Project poster">
+      <div class="photo-caption">A WPA Federal Art Project poster. The government funded over 200,000 works of public art.</div>
+    </div>
+  </div>
+
+  <div class="rule-thin"></div>
+
+  <div class="section-label">The Political Cartoon</div>
+  <h2>What People Thought</h2>
+
+  <div class="cartoon-box">
+    <img src="images/wpa_art.jpg" alt="WPA Federal Art Project poster">
+    <div class="cartoon-caption">WPA Federal Art Project poster. New Deal programs did not only fund roads and parks; they also funded public art, education, and culture as part of the government response to the Depression.</div>
+  </div>
+
+  <p>Not everyone celebrated. Business owners argued the government had no right to interfere with the market. Conservative politicians called Roosevelt a socialist. The Supreme Court struck down several New Deal programs as unconstitutional. Roosevelt responded by threatening to add new justices to the Court — a move that alarmed even his supporters.</p>
+  <p>The argument over whether the New Deal went too far or not far enough continues today.</p>
+
+  <div class="rule-thin"></div>
+
+  <div class="section-label">The Seen and The Unseen</div>
+  <h2>Who Benefited — And Who Paid</h2>
+
+  <div class="two-col">
+    <div class="col-seen">
+      <h3>What Everyone Could See</h3>
+      <p>Millions of Americans went back to work. Roads were built. Schools were constructed. Parks were restored. Unemployment fell from 25 percent in 1933 to 14 percent by 1937. Families had paychecks again. Communities had buildings that are still standing today.</p>
+      <p>The Social Security Act — passed in 1935 — created a permanent safety net for elderly and disabled Americans. That program still exists.</p>
+    </div>
+    <div class="col-unseen">
+      <h3>What Was Harder to See</h3>
+      <p>The New Deal had a racial blind spot built directly into it. Many programs specifically excluded Black Americans. The CCC was segregated. The Agricultural Adjustment Act paid white farm owners to reduce production — and those owners used the payments to evict Black sharecroppers from the land they worked.</p>
+      <p>The deficit spending that funded the New Deal added to a national debt that future generations would carry. And unemployment did not return to pre-Depression levels until World War II began.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="vocab-strip">
+  <div class="container" style="padding-top:0;padding-bottom:0">
+    <div class="section-label">Term Bank</div>
+    <h2>Key Terms for This Event</h2>
+    <div class="vocab-grid">
+      <div class="vocab-item">
+        <div class="vocab-term">Expansionary Fiscal Policy</div>
+        <div class="vocab-def">Government action to stimulate a slowing economy by increasing spending or cutting taxes. The New Deal is the defining example.</div>
+      </div>
+      <div class="vocab-item">
+        <div class="vocab-term">Multiplier Effect</div>
+        <div class="vocab-def">One government dollar generates more than one dollar of economic activity. Every CCC paycheck spent at a local store kept moving.</div>
+      </div>
+      <div class="vocab-item">
+        <div class="vocab-term">Budget Deficit</div>
+        <div class="vocab-def">Government spends more than it collects in taxes. The New Deal ran deficits every year — the spending came before the revenue.</div>
+      </div>
+      <div class="vocab-item">
+        <div class="vocab-term">National Debt</div>
+        <div class="vocab-def">The total amount the government owes from years of deficit spending. The New Deal added significantly to the debt the U.S. carried into World War II.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

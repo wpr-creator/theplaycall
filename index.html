@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Play Call — U4 L4 CP Economics</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Bebas+Neue&family=IBM+Plex+Sans+Condensed:wght@600;700&family=Syne:wght@700;800&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#0f0e0c;
+  --paper:#f5f0e8;
+  --cream:#faf7f0;
+  --accent:#c4880a;
+  --rust:#b8390e;
+  --mid:#6b5a3e;
+  --light:#e8dfc8;
+  --sepia:#8b6914;
+  --white:#f8fafc;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Source Serif 4',serif;
+  font-size:17px;
+  line-height:1.75;
+  min-height:100vh;
+}
+
+/* ── MASTHEAD ── */
+.masthead{
+  background:var(--ink);
+  color:var(--cream);
+  padding:0;
+  position:relative;
+  overflow:hidden;
+  min-height:580px;
+  display:flex;
+  align-items:stretch;
+}
+.masthead-bg{
+  position:absolute;
+  inset:0;
+  background-image:
+    repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(196,136,10,0.06) 40px),
+    repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(196,136,10,0.06) 40px);
+  pointer-events:none;
+}
+.masthead-inner{
+  position:relative;
+  z-index:2;
+  max-width:900px;
+  margin:0 auto;
+  padding:4rem 2.5rem 3.5rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-start;
+  width:100%;
+}
+.course-tag{
+  font-family:'DM Mono',monospace;
+  font-size:11px;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:1.2rem;
+  border:1px solid rgba(196,136,10,0.4);
+  padding:0.3rem 0.75rem;
+  display:inline-block;
+}
+.masthead h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(4rem,9vw,7.5rem);
+  font-weight:900;
+  line-height:0.9;
+  color:var(--cream);
+  margin-bottom:1.5rem;
+  letter-spacing:-0.02em;
+}
+.masthead h1 .accent{color:var(--accent)}
+.masthead-rule{
+  width:80px;
+  height:4px;
+  background:var(--rust);
+  margin-bottom:1.5rem;
+}
+.masthead-desc{
+  font-size:1.15rem;
+  line-height:1.7;
+  color:rgba(250,247,240,0.78);
+  max-width:560px;
+  font-weight:300;
+  font-style:italic;
+  margin-bottom:2rem;
+}
+.masthead-meta{
+  font-family:'DM Mono',monospace;
+  font-size:10px;
+  letter-spacing:0.15em;
+  color:rgba(196,136,10,0.7);
+  margin-top:auto;
+}
+
+/* DECORATIVE NUMBER */
+.big-number{
+  position:absolute;
+  right:-10px;
+  bottom:-20px;
+  font-family:'Playfair Display',serif;
+  font-size:320px;
+  font-weight:900;
+  color:rgba(196,136,10,0.04);
+  line-height:1;
+  pointer-events:none;
+  user-select:none;
+  z-index:1;
+}
+
+/* ── RULE ── */
+.top-rule{height:5px;background:var(--rust)}
+
+/* ── INTRO STRIP ── */
+.intro-strip{
+  background:var(--cream);
+  border-bottom:1px solid var(--light);
+  padding:2rem 2.5rem;
+}
+.intro-inner{
+  max-width:900px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 2fr;
+  gap:2rem;
+  align-items:center;
+}
+.intro-label{
+  font-family:'DM Mono',monospace;
+  font-size:10px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--sepia);
+  margin-bottom:0.5rem;
+}
+.intro-heading{
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;
+  font-weight:700;
+  color:var(--ink);
+  line-height:1.25;
+}
+.intro-body{
+  font-size:0.97rem;
+  color:var(--mid);
+  line-height:1.7;
+}
+.intro-body strong{
+  color:var(--ink);
+  font-weight:600;
+}
+
+/* ── TASK STRIP ── */
+.task-strip{
+  background:var(--ink);
+  color:var(--cream);
+  padding:1.5rem 2.5rem;
+}
+.task-inner{
+  max-width:900px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:2rem;
+  flex-wrap:wrap;
+}
+.task-step{
+  display:flex;
+  align-items:center;
+  gap:0.75rem;
+  font-size:0.92rem;
+  color:rgba(250,247,240,0.82);
+}
+.task-num{
+  font-family:'DM Mono',monospace;
+  font-size:11px;
+  width:24px;
+  height:24px;
+  border:1px solid var(--accent);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--accent);
+  flex-shrink:0;
+}
+.task-arrow{
+  font-family:'DM Mono',monospace;
+  font-size:16px;
+  color:rgba(196,136,10,0.4);
+}
+
+/* ── CARDS GRID ── */
+.cards-section{
+  max-width:900px;
+  margin:0 auto;
+  padding:3rem 2rem;
+}
+.cards-label{
+  font-family:'DM Mono',monospace;
+  font-size:10px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--sepia);
+  margin-bottom:0.5rem;
+}
+.cards-heading{
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;
+  font-weight:700;
+  margin-bottom:2rem;
+  color:var(--ink);
+}
+.cards-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.5rem;
+}
+
+/* CARD */
+.card{
+  background:var(--cream);
+  border:1px solid var(--light);
+  text-decoration:none;
+  color:inherit;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  transition:transform 0.2s ease, box-shadow 0.2s ease;
+  position:relative;
+}
+.card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 32px rgba(15,14,12,0.12);
+}
+.card-img{
+  height:200px;
+  overflow:hidden;
+  position:relative;
+}
+.card-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform 0.4s ease;
+}
+.card:hover .card-img img{transform:scale(1.04)}
+.card-img-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:flex-end;
+  padding:0.75rem;
+}
+.card-era{
+  font-family:'DM Mono',monospace;
+  font-size:10px;
+  letter-spacing:0.12em;
+  color:var(--cream);
+  background:rgba(15,14,12,0.7);
+  padding:0.25rem 0.5rem;
+  backdrop-filter:blur(2px);
+}
+.card-body{
+  padding:1.5rem;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
+.card-number{
+  font-family:'DM Mono',monospace;
+  font-size:10px;
+  letter-spacing:0.15em;
+  color:var(--sepia);
+  margin-bottom:0.4rem;
+}
+.card-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.35rem;
+  font-weight:700;
+  color:var(--ink);
+  line-height:1.2;
+  margin-bottom:0.5rem;
+}
+.card-subtitle{
+  font-size:0.88rem;
+  color:var(--mid);
+  font-style:italic;
+  margin-bottom:1rem;
+  line-height:1.5;
+  flex:1;
+}
+.card-tag{
+  font-family:'DM Mono',monospace;
+  font-size:10px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  padding:0.25rem 0.6rem;
+  border:1px solid currentColor;
+  display:inline-block;
+  align-self:flex-start;
+}
+
+/* CARD COLOR VARIANTS */
+.card-1 .card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(139,105,20,0.3),transparent)}
+.card-1 .card-tag{color:var(--sepia)}
+.card-1{border-top:4px solid var(--sepia)}
+
+.card-2 .card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(28,31,36,0.35),transparent)}
+.card-2 .card-tag{color:#2d5a1b}
+.card-2{border-top:4px solid #2d5a1b}
+
+.card-3 .card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(196,18,48,0.3),transparent)}
+.card-3 .card-tag{color:var(--rust)}
+.card-3{border-top:4px solid var(--rust)}
+
+.card-4 .card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(30,58,138,0.3),transparent)}
+.card-4 .card-tag{color:#1b4f8a}
+.card-4{border-top:4px solid #1b4f8a}
+
+/* CTA on card */
+.card-cta{
+  display:flex;
+  align-items:center;
+  gap:0.5rem;
+  font-family:'DM Mono',monospace;
+  font-size:11px;
+  letter-spacing:0.1em;
+  color:var(--mid);
+  margin-top:1rem;
+  padding-top:1rem;
+  border-top:1px solid var(--light);
+}
+.card-cta::after{content:'→';transition:transform 0.2s}
+.card:hover .card-cta::after{transform:translateX(4px)}
+
+/* ── TERM BANK ── */
+.term-section{
+  background:var(--ink);
+  color:var(--cream);
+  padding:2.5rem 2.5rem;
+}
+.term-inner{
+  max-width:900px;
+  margin:0 auto;
+}
+.term-label{
+  font-family:'DM Mono',monospace;
+  font-size:10px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:0.5rem;
+}
+.term-heading{
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;
+  color:var(--cream);
+  margin-bottom:1.5rem;
+}
+.term-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1rem;
+}
+.term-pill{
+  border:1px solid rgba(196,136,10,0.35);
+  padding:0.6rem 0.75rem;
+  text-align:center;
+}
+.term-pill-name{
+  font-family:'DM Mono',monospace;
+  font-size:10px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--accent);
+  line-height:1.4;
+}
+
+/* ── FOOTER ── */
+.footer{
+  background:var(--cream);
+  border-top:1px solid var(--light);
+  padding:1.5rem 2.5rem;
+  text-align:center;
+}
+.footer p{
+  font-family:'DM Mono',monospace;
+  font-size:10px;
+  letter-spacing:0.12em;
+  color:var(--sepia);
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:640px){
+  .masthead h1{font-size:clamp(3rem,12vw,5rem)}
+  .cards-grid{grid-template-columns:1fr}
+  .term-grid{grid-template-columns:repeat(2,1fr)}
+  .intro-inner{grid-template-columns:1fr}
+  .big-number{font-size:180px}
+}
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="masthead-bg"></div>
+  <div class="big-number">4</div>
+  <div class="masthead-inner">
+    <div class="course-tag">CP Economics · U4 | L4 · CA HSS 12.3.3</div>
+    <h1>The <span class="accent">Play</span><br>Call</h1>
+    <div class="masthead-rule"></div>
+    <p class="masthead-desc">Every time the government intervenes in the economy it makes a play call. Someone wins visibly. Someone pays quietly. Your job is to find both.</p>
+    <div class="masthead-meta">Four Events · Four Eras · One Essential Question</div>
+  </div>
+</div>
+<div class="top-rule"></div>
+
+<!-- INTRO STRIP -->
+<div class="intro-strip">
+  <div class="intro-inner">
+    <div>
+      <div class="intro-label">Essential Question</div>
+      <div class="intro-heading">What happens when the government intervenes in the market?</div>
+    </div>
+    <p class="intro-body">
+      Below are four real moments when the U.S. government stepped into the economy and made a decision. Each one used <strong>fiscal policy</strong> — the government's power to tax and spend — to respond to a crisis. Each one produced a visible result and a hidden cost. Read the event you choose carefully. You will use what you learn to write in <strong>two of four genres</strong>.
+    </p>
+  </div>
+</div>
+
+<!-- TASK STRIP -->
+<div class="task-strip">
+  <div class="task-inner">
+    <div class="task-step">
+      <div class="task-num">1</div>
+      <span>Choose one event below and read it fully</span>
+    </div>
+    <div class="task-arrow">→</div>
+    <div class="task-step">
+      <div class="task-num">2</div>
+      <span>Return to your Google Doc</span>
+    </div>
+    <div class="task-arrow">→</div>
+    <div class="task-step">
+      <div class="task-num">3</div>
+      <span>Delete the genres and events you are not using</span>
+    </div>
+    <div class="task-arrow">→</div>
+    <div class="task-step">
+      <div class="task-num">4</div>
+      <span>Write three paragraphs in each chosen genre</span>
+    </div>
+  </div>
+</div>
+
+<!-- CARDS -->
+<div class="cards-section">
+  <div class="cards-label">Your Four Events</div>
+  <div class="cards-heading">Choose One. Read Everything on That Page.</div>
+  <div class="cards-grid">
+
+    <!-- Card 1 -->
+    <a href="new_deal.html" class="card card-1">
+      <div class="card-img">
+        <img src="images/migrant_mother.jpg" alt="Migrant Mother photograph 1936">
+        <div class="card-img-overlay">
+          <div class="card-era">1933 – 1938</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-number">Event 01</div>
+        <div class="card-title">The New Deal</div>
+        <p class="card-subtitle">One in four Americans had no job. Roosevelt responded with the biggest government spending program in U.S. history. Millions went back to work. Not all of them equally.</p>
+        <div class="card-tag">Expansionary Fiscal Policy</div>
+        <div class="card-cta">Read this event</div>
+      </div>
+    </a>
+
+    <!-- Card 2 -->
+    <a href="highway.html" class="card card-2">
+      <div class="card-img">
+        <img src="images/interstate_highway.jpg" alt="Interstate highway aerial view">
+        <div class="card-img-overlay">
+          <div class="card-era">1956</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-number">Event 02</div>
+        <div class="card-title">The Interstate Highway Act</div>
+        <p class="card-subtitle">Eisenhower spent $25 billion to connect a nation. The highways built the suburbs. They also demolished the neighborhoods they ran through.</p>
+        <div class="card-tag">Multiplier Effect</div>
+        <div class="card-cta">Read this event</div>
+      </div>
+    </a>
+
+    <!-- Card 3 -->
+    <a href="tarp.html" class="card card-3">
+      <div class="card-img">
+        <img src="images/tarp_lehman.jpg" alt="Lehman Brothers building">
+        <div class="card-img-overlay">
+          <div class="card-era">2008</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-number">Event 03</div>
+        <div class="card-title">The $700 Billion Bailout — TARP</div>
+        <p class="card-subtitle">The banks caused the crash. The government saved the banks. Eight million Americans lost their jobs anyway. No senior executive went to prison.</p>
+        <div class="card-tag">Budget Deficit · National Debt</div>
+        <div class="card-cta">Read this event</div>
+      </div>
+    </a>
+
+    <!-- Card 4 -->
+    <a href="cares.html" class="card card-4">
+      <div class="card-img">
+        <img src="images/cares_covid.jpg" alt="COVID stay at home order">
+        <div class="card-img-overlay">
+          <div class="card-era">2020</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-number">Event 04</div>
+        <div class="card-title">The $1,200 Check — CARES Act</div>
+        <p class="card-subtitle">Every qualifying adult got the same amount. For some it covered rent. For others it went unnoticed. Same dollar. Completely different weight depending on where it landed.</p>
+        <div class="card-tag">Fiscal Policy · Multiplier Effect</div>
+        <div class="card-cta">Read this event</div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- TERM BANK -->
+<div class="term-section">
+  <div class="term-inner">
+    <div class="term-label">Required Term Bank</div>
+    <div class="term-heading">Use at least two of these terms in each genre you write.</div>
+    <div class="term-grid">
+      <div class="term-pill"><div class="term-pill-name">Fiscal Policy</div></div>
+      <div class="term-pill"><div class="term-pill-name">Expansionary Fiscal Policy</div></div>
+      <div class="term-pill"><div class="term-pill-name">Contractionary Fiscal Policy</div></div>
+      <div class="term-pill"><div class="term-pill-name">Multiplier Effect</div></div>
+      <div class="term-pill"><div class="term-pill-name">Progressive Tax</div></div>
+      <div class="term-pill"><div class="term-pill-name">Regressive Tax</div></div>
+      <div class="term-pill"><div class="term-pill-name">Budget Deficit</div></div>
+      <div class="term-pill"><div class="term-pill-name">National Debt</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>THE PLAY CALL · CP ECONOMICS · U4 L4 · CA HSS 12.3.3 · FISCAL AND MONETARY POLICY</p>
+</div>
+
+</body>
+</html>

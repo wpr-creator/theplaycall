@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Nunito:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--navy:#0d1b2a;
+--blue:#1b4f8a;
+--sky:#2e7bc4;
+--lightblue:#dbeafe;
+--white:#f8fafc;
+--gray:#64748b;
+--lightgray:#e2e8f0;
+--green:#166534;
+--lightgreen:#dcfce7;
+--amber:#b45309;
+--cream:#f9fafb;
+--red:#991b1b;
+}
+body{background:var(--cream);color:var(--navy);font-family:'Nunito',sans-serif;font-size:17px;line-height:1.75}
+
+/* HERO */
+.hero{background:var(--navy);display:grid;grid-template-columns:1fr 1fr;min-height:480px;position:relative;overflow:hidden}
+.hero::before{content:'$1,200';position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-family:'Syne',sans-serif;font-size:180px;font-weight:800;color:rgba(255,255,255,0.04);pointer-events:none;white-space:nowrap}
+.hero-text{padding:3.5rem;display:flex;flex-direction:column;justify-content:center;z-index:2}
+.kicker{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#60a5fa;margin-bottom:1.2rem}
+h1{font-family:'Syne',sans-serif;font-size:clamp(2.8rem,5vw,4.5rem);font-weight:800;line-height:0.95;color:var(--white);margin-bottom:1rem}
+h1 em{color:#60a5fa;font-style:normal}
+.hero-sub{font-size:1rem;color:rgba(248,250,252,0.72);line-height:1.65;font-weight:300;max-width:380px}
+.dateline{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#475569;margin-top:1.5rem}
+.hero-right{position:relative;overflow:hidden}
+.hero-right img{width:100%;height:100%;object-fit:cover;opacity:0.55}
+.hero-right::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--navy) 0%,transparent 35%);z-index:1}
+
+/* ALERT BANNER */
+.alert{background:var(--sky);color:var(--white);padding:0.65rem 2rem;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.08em;display:flex;align-items:center;gap:1rem}
+.alert-dot{width:8px;height:8px;background:var(--white);border-radius:50%;flex-shrink:0;animation:pulse 1.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
+/* CONTAINER */
+.container{max-width:900px;margin:0 auto;padding:2.5rem 2rem}
+.section-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--sky);margin-bottom:0.5rem}
+h2{font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:700;color:var(--navy);margin-bottom:0.9rem}
+h3{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:0.5rem}
+p{margin-bottom:1rem}
+.lede{font-size:1.08rem;font-weight:300;color:#374151;margin-bottom:1.25rem;line-height:1.75}
+.rule-thin{height:1px;background:var(--lightgray);margin:2rem 0}
+
+/* CHECK GRAPHIC */
+.check-graphic{background:var(--white);border:1px solid var(--lightgray);padding:1.5rem 2rem;margin:2rem 0;position:relative;overflow:hidden}
+.check-graphic::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:repeating-linear-gradient(90deg,var(--sky) 0px,var(--sky) 20px,transparent 20px,transparent 30px)}
+.check-amount{font-family:'Syne',sans-serif;font-size:3.5rem;font-weight:800;color:var(--green);line-height:1;margin-bottom:0.25rem}
+.check-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;color:var(--gray)}
+.check-sub{font-size:0.92rem;color:var(--gray);margin-top:0.5rem;font-style:italic}
+
+/* PULL QUOTE */
+.pull-quote{border-left:5px solid var(--sky);padding:1rem 1.5rem;margin:2rem 0;background:var(--navy)}
+.pull-quote p{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;color:var(--white);line-height:1.25}
+.pull-quote cite{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;color:#64748b;display:block;margin-top:0.5rem}
+
+/* STATS */
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0}
+.stat-box{background:var(--navy);color:var(--white);padding:1.25rem;border-radius:4px}
+.stat-num{font-family:'Syne',sans-serif;font-size:2.3rem;font-weight:800;color:#60a5fa;line-height:1}
+.stat-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#94a3b8;margin-top:0.3rem;line-height:1.4}
+
+/* PHOTOS */
+.photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}
+.photo-grid.three{grid-template-columns:1fr 1fr 1fr}
+.photo-item img{width:100%;height:210px;object-fit:cover;display:block}
+.photo-caption{font-family:'Space Mono',monospace;font-size:10px;color:var(--gray);padding:0.4rem 0.5rem;background:var(--lightgray);line-height:1.4}
+
+/* COMPARISON */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:2rem 0;border:1px solid var(--lightgray);border-radius:4px;overflow:hidden}
+.compare-a{padding:1.5rem;background:var(--lightgreen);border-right:1px solid var(--lightgray)}
+.compare-b{padding:1.5rem;background:var(--navy)}
+.compare-a h3{color:var(--green);font-size:1rem}
+.compare-b h3{color:#60a5fa;font-size:1rem}
+.compare-a p,.compare-b p{font-size:0.93rem;margin-bottom:0.5rem}
+.compare-b p{color:rgba(248,250,252,0.82)}
+.compare-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--gray);margin-bottom:0.35rem}
+.compare-b .compare-label{color:#475569}
+.big-number{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;margin-bottom:0.25rem}
+.compare-a .big-number{color:var(--green)}
+.compare-b .big-number{color:#60a5fa}
+
+/* SEEN/UNSEEN */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0}
+.col-seen{border-top:4px solid var(--sky);padding:1.25rem 1.5rem;background:var(--lightblue)}
+.col-seen h3{color:var(--blue)}
+.col-unseen{border-top:4px solid var(--amber);padding:1.25rem 1.5rem;background:var(--navy)}
+.col-unseen h3{color:#fbbf24}
+.col-unseen p{color:rgba(248,250,252,0.82);font-size:0.95rem}
+.col-seen p{font-size:0.95rem}
+
+/* VOCAB */
+.vocab-strip{background:var(--navy);color:var(--white);padding:1.75rem 2rem;margin-top:2rem}
+.vocab-strip .section-label{color:#60a5fa}
+.vocab-strip h2{color:var(--white);font-size:1.4rem;margin-bottom:1.25rem}
+.vocab-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+.vocab-item{border-left:3px solid #60a5fa;padding-left:0.75rem}
+.vocab-term{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#60a5fa}
+.vocab-def{font-size:0.88rem;color:rgba(248,250,252,0.8);margin-top:0.2rem;line-height:1.5}
+
+@media(max-width:650px){
+  .hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .two-col,.photo-grid,.photo-grid.three,.stat-row,.vocab-grid,.compare{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-text">
+    <div class="kicker">The Play Call — Event 4 of 4</div>
+    <h1>The <em>$1,200</em> Check</h1>
+    <p class="hero-sub">Every qualifying adult in America got the same amount. But $1,200 does not feel the same everywhere it lands.</p>
+    <div class="dateline">United States · 2020 · CARES Act — Coronavirus Aid, Relief, and Economic Security Act</div>
+  </div>
+  <div class="hero-right">
+    <img src="images/cares_covid.jpg" alt="COVID stay at home order sign">
+  </div>
+</div>
+
+<div class="alert">
+  <div class="alert-dot"></div>
+  MARCH 27, 2020 · PRESIDENT TRUMP SIGNS THE CARES ACT · $2.2 TRILLION RELIEF PACKAGE · LARGEST IN U.S. HISTORY
+</div>
+
+<div class="container">
+
+  <div class="section-label">The Setup</div>
+  <h2>The Economy Shut Down Overnight</h2>
+  <p class="lede">In March 2020, the COVID-19 pandemic forced governments across the world to shut down businesses, schools, and public spaces to slow the spread of the virus. In the United States, GDP fell by 32 percent in a single quarter — the sharpest economic drop in recorded history.</p>
+  <p>Restaurants, salons, gyms, retail stores, and entertainment venues closed. Millions of Americans lost their jobs within weeks. Unemployment reached 14.7 percent in April 2020 — the highest rate since the Great Depression. Families who had been living paycheck to paycheck had no paycheck at all.</p>
+  <p>Congress moved faster than it had in decades. On March 27, 2020 — less than two weeks after the shutdown began — President Trump signed the CARES Act into law. At $2.2 trillion, it was the largest economic relief package in American history.</p>
+
+  <div class="check-graphic">
+    <div class="check-label">Economic Impact Payment — Per Qualifying Adult</div>
+    <div class="check-amount">$1,200</div>
+    <div class="check-sub">Plus $500 per child under 17 · Sent to approximately 160 million Americans</div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <div class="stat-num">$2.2T</div>
+      <div class="stat-label">Total CARES Act spending — 10% of annual U.S. GDP</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">14.7%</div>
+      <div class="stat-label">Peak unemployment in April 2020</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">160M</div>
+      <div class="stat-label">Americans who received a stimulus check</div>
+    </div>
+  </div>
+
+  <div class="rule-thin"></div>
+
+  <div class="section-label">The Intervention</div>
+  <h2>Same Check — Different Weight</h2>
+
+  <p>The CARES Act did more than send checks. It expanded unemployment benefits by $600 per week on top of state payments. It created the Paycheck Protection Program — PPP — which gave forgivable loans to small businesses that kept their employees on the payroll. It provided $500 billion in loans for large corporations and $150 billion for state and local governments.</p>
+  <p>But the $1,200 checks are what most people remember — because most people got one. And research conducted after the payments arrived showed something important about how government spending actually works in the real world.</p>
+
+  <div class="compare">
+    <div class="compare-a">
+      <div class="compare-label">Lower-income household</div>
+      <div class="big-number">88%</div>
+      <h3>of the check was spent within 10 weeks</h3>
+      <p>Rent. Groceries. Utilities. Bus fare. The money moved immediately into the local economy and kept circulating.</p>
+    </div>
+    <div class="compare-b">
+      <div class="compare-label">Higher-income household</div>
+      <div class="big-number">29%</div>
+      <h3 style="color:#60a5fa">of the check was spent within 10 weeks</h3>
+      <p>Most of it went into savings or investments. The money largely stopped moving after the first transaction.</p>
+    </div>
+  </div>
+
+  <p>This is the multiplier effect in action — and its limits. The government injected the same dollar into every household. But the dollar generated far more economic activity when it landed where people spend immediately. The design of the policy — a flat payment to everyone — was politically simple but economically imprecise.</p>
+
+  <div class="pull-quote">
+    <p>"The same $1,200 covered rent in National City and went unnoticed in La Jolla."</p>
+    <cite>— The core seen vs. unseen tension of the 2020 stimulus</cite>
+  </div>
+
+  <div class="rule-thin"></div>
+
+  <div class="section-label">The Seen and The Unseen</div>
+  <h2>What the CARES Act Did — and Did Not — Fix</h2>
+
+  <div class="two-col">
+    <div class="col-seen">
+      <h3>What Was Visible</h3>
+      <p>The economy did not collapse the way it did in 2008. Unemployment fell rapidly after the initial shock — from 14.7 percent in April 2020 to under 7 percent by December. Consumer spending recovered faster than most economists predicted. Many small businesses survived that would otherwise have closed permanently.</p>
+      <p>The stimulus checks provided genuine relief to tens of millions of families who were living paycheck to paycheck and had nowhere else to turn.</p>
+    </div>
+    <div class="col-unseen">
+      <h3>What Was Harder to See</h3>
+      <p>The CARES Act added $1.7 trillion to the national debt over the following decade. Inflation followed — by 2022, prices for groceries, gas, and rent had risen sharply, which hit low-income households the hardest because they spend a higher share of their income on necessities.</p>
+      <p>Undocumented immigrants — many of them essential workers who kept grocery stores and hospitals running during the pandemic — received nothing. No check. No expanded unemployment. No PPP loans.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="vocab-strip">
+  <div class="container" style="padding-top:0;padding-bottom:0">
+    <div class="section-label">Term Bank</div>
+    <h2>Key Terms for This Event</h2>
+    <div class="vocab-grid">
+      <div class="vocab-item">
+        <div class="vocab-term">Expansionary Fiscal Policy</div>
+        <div class="vocab-def">Government action to stimulate a contracting economy by spending or cutting taxes. The CARES Act is the largest single example of expansionary fiscal policy in U.S. history.</div>
+      </div>
+      <div class="vocab-item">
+        <div class="vocab-term">Multiplier Effect</div>
+        <div class="vocab-def">One dollar of government spending generates more economic activity than the original amount. The CARES Act showed the multiplier works faster when money lands where people spend immediately.</div>
+      </div>
+      <div class="vocab-item">
+        <div class="vocab-term">National Debt</div>
+        <div class="vocab-def">The total accumulated amount the government owes. The CARES Act added $1.7 trillion to the national debt — a cost future taxpayers will carry.</div>
+      </div>
+      <div class="vocab-item">
+        <div class="vocab-term">Regressive Tax</div>
+        <div class="vocab-def">A tax that takes a higher share of income from lower earners. The inflation that followed the CARES Act functioned like a regressive tax — rising prices hit low-income households hardest.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

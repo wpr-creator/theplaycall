@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--black:#0a0a0a;
+--white:#f8f8f6;
+--red:#c41230;
+--darkred:#8c0d22;
+--gray:#6b6b6b;
+--lightgray:#e4e4e0;
+--cream:#f5f5f0;
+--green:#1a5c2a;
+--amber:#d4760a;
+}
+body{background:var(--cream);color:var(--black);font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.7}
+
+/* HERO — newspaper front page feel */
+.hero{background:var(--black);color:var(--white);padding:0;display:grid;grid-template-columns:1.1fr 0.9fr;min-height:480px}
+.hero-left{padding:3rem 3rem 3rem 3.5rem;display:flex;flex-direction:column;justify-content:center;border-right:1px solid rgba(255,255,255,0.1)}
+.kicker{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;color:var(--red);margin-bottom:1rem}
+h1{font-family:'IBM Plex Sans Condensed',sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;line-height:0.95;color:var(--white);margin-bottom:1rem}
+h1 .highlight{color:var(--red)}
+.hero-sub{font-size:0.98rem;color:rgba(248,248,246,0.72);line-height:1.65;font-weight:300;max-width:380px}
+.dateline{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;color:var(--gray);margin-top:1.5rem}
+.hero-right{position:relative;overflow:hidden}
+.hero-right img{width:100%;height:100%;object-fit:cover;opacity:0.6;filter:grayscale(30%) contrast(1.1)}
+.hero-right::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--black) 0%,transparent 35%);z-index:1}
+
+/* TICKER */
+.ticker{background:var(--red);color:var(--white);padding:0.5rem 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;overflow:hidden;white-space:nowrap}
+.ticker-inner{display:inline-block;animation:scroll 20s linear infinite}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* CONTAINER */
+.container{max-width:900px;margin:0 auto;padding:2.5rem 2rem}
+.section-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem}
+h2{font-family:'IBM Plex Sans Condensed',sans-serif;font-size:2rem;font-weight:700;color:var(--black);margin-bottom:0.9rem;letter-spacing:-0.01em}
+h3{font-family:'IBM Plex Sans Condensed',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.5rem}
+p{margin-bottom:1rem}
+.lede{font-size:1.08rem;font-weight:300;color:#3a3a3a;margin-bottom:1.25rem;line-height:1.7}
+.rule-thin{height:1px;background:var(--lightgray);margin:2rem 0}
+
+/* PULL QUOTE */
+.pull-quote{border-left:5px solid var(--red);padding:1rem 1.5rem;margin:2rem 0;background:var(--black)}
+.pull-quote p{font-family:'IBM Plex Sans Condensed',sans-serif;font-size:1.5rem;font-weight:700;color:var(--white);line-height:1.2}
+.pull-quote cite{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--gray);display:block;margin-top:0.5rem}
+
+/* STATS */
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:2rem 0;border:1px solid var(--lightgray)}
+.stat-box{padding:1.25rem;border-right:1px solid var(--lightgray);text-align:center}
+.stat-box:last-child{border-right:none}
+.stat-box.red{background:var(--red);color:var(--white)}
+.stat-num{font-family:'IBM Plex Sans Condensed',sans-serif;font-size:2.3rem;font-weight:700;color:var(--red);line-height:1}
+.stat-box.red .stat-num{color:var(--white)}
+.stat-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.08em;color:var(--gray);margin-top:0.3rem;line-height:1.4}
+.stat-box.red .stat-label{color:rgba(255,255,255,0.75)}
+
+/* PHOTOS */
+.photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}
+.photo-grid.three{grid-template-columns:1fr 1fr 1fr}
+.photo-item img{width:100%;height:210px;object-fit:cover;display:block;filter:grayscale(20%)}
+.photo-caption{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--gray);padding:0.4rem 0.5rem;background:var(--lightgray);line-height:1.4}
+
+/* SEEN/UNSEEN */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:2rem 0;border:1px solid var(--lightgray)}
+.col-seen{border-right:1px solid var(--lightgray);padding:1.5rem;border-top:4px solid var(--green)}
+.col-seen h3{color:var(--green)}
+.col-unseen{padding:1.5rem;background:var(--black);border-top:4px solid var(--red)}
+.col-unseen h3{color:var(--red)}
+.col-unseen p{color:rgba(248,248,246,0.82);font-size:0.95rem}
+.col-seen p{font-size:0.95rem}
+
+/* CARTOON */
+.cartoon-box{background:var(--lightgray);padding:1.25rem;margin:2rem 0}
+.cartoon-box img{width:100%;max-height:320px;object-fit:contain;display:block}
+.cartoon-caption{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--gray);margin-top:0.6rem;line-height:1.4}
+
+/* VOCAB */
+.vocab-strip{background:var(--black);color:var(--white);padding:1.75rem 2rem;margin-top:2rem}
+.vocab-strip .section-label{color:var(--red)}
+.vocab-strip h2{color:var(--white);font-size:1.4rem;margin-bottom:1.25rem}
+.vocab-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+.vocab-item{border-left:3px solid var(--red);padding-left:0.75rem}
+.vocab-term{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--red)}
+.vocab-def{font-size:0.88rem;color:rgba(248,248,246,0.8);margin-top:0.2rem;line-height:1.5}
+
+@media(max-width:650px){
+  .hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .two-col,.photo-grid,.photo-grid.three,.stat-row,.vocab-grid{grid-template-columns:1fr}
+  .stat-box{border-right:none;border-bottom:1px solid var(--lightgray)}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="kicker">The Play Call — Event 3 of 4</div>
+    <h1>The <span class="highlight">$700 Billion</span> Bailout</h1>
+    <p class="hero-sub">The banks caused the crash. The government saved the banks. The families who lost their homes did not get a bailout.</p>
+    <div class="dateline">United States · 2008 · TARP — Troubled Asset Relief Program</div>
+  </div>
+  <div class="hero-right">
+    <img src="images/tarp_lehman.jpg" alt="Lehman Brothers building Times Square">
+  </div>
+</div>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    LEHMAN BROTHERS FILES FOR BANKRUPTCY · SEPTEMBER 15 2008 · DOW FALLS 504 POINTS · CONGRESS APPROVES $700 BILLION TARP · UNEMPLOYMENT RISES TO 10% · 8 MILLION JOBS LOST · 3.8 MILLION FORECLOSURES IN 2010 · &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LEHMAN BROTHERS FILES FOR BANKRUPTCY · SEPTEMBER 15 2008 · DOW FALLS 504 POINTS · CONGRESS APPROVES $700 BILLION TARP · UNEMPLOYMENT RISES TO 10% · 8 MILLION JOBS LOST · 3.8 MILLION FORECLOSURES IN 2010 ·
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="section-label">The Setup</div>
+  <h2>How the Whole Thing Collapsed</h2>
+  <p class="lede">In 2008, the U.S. financial system came close to total collapse. Banks had spent years making risky mortgage loans to homebuyers who could not afford them — then packaging those loans and selling them to investors worldwide as if they were safe.</p>
+  <p>When homeowners started defaulting on their mortgages in large numbers, the value of those packaged loans crashed. Banks that had bet everything on those packages were suddenly worthless. On September 15, 2008, Lehman Brothers — one of the largest investment banks in the world — filed for bankruptcy. It was the largest bankruptcy in American history.</p>
+  <p>Credit markets froze. Businesses could not borrow money to make payroll. The entire global financial system was hours away from seizing up completely. The U.S. Treasury and Federal Reserve told Congress that without immediate action, the country faced a second Great Depression within days.</p>
+
+  <div class="pull-quote">
+    <p>"If we don't do this, we may not have an economy on Monday."</p>
+    <cite>— Treasury Secretary Hank Paulson to Congressional leaders, September 2008</cite>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-box red">
+      <div class="stat-num">$700B</div>
+      <div class="stat-label">Authorized for TARP by Congress</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">8M</div>
+      <div class="stat-label">Jobs lost during the Great Recession</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">3.8M</div>
+      <div class="stat-label">Foreclosures filed in 2010 alone</div>
+    </div>
+  </div>
+
+  <div class="photo-grid">
+    <div class="photo-item">
+      <img src="images/tarp_foreclosure.jpg" alt="Foreclosure sign on a house">
+      <div class="photo-caption">Foreclosure signs appeared across American neighborhoods in 2008 and 2009. Millions of families lost their homes.</div>
+    </div>
+    <div class="photo-item">
+      <img src="images/tarp_lehman_scene.jpg" alt="Lehman Brothers employees leaving with boxes">
+      <div class="photo-caption">Lehman Brothers employees carry their belongings out of the building on September 15, 2008 — the day the bank collapsed.</div>
+    </div>
+  </div>
+
+  <div class="rule-thin"></div>
+
+  <div class="section-label">The Intervention</div>
+  <h2>The Government Saves the Banks</h2>
+  <p>Congress passed the Troubled Asset Relief Program — TARP — on October 3, 2008. The government was authorized to spend up to $700 billion to purchase failing assets from banks and inject capital directly into financial institutions. The goal was to prevent the total collapse of the banking system.</p>
+  <p>The money moved fast. Within weeks, the Treasury had pumped billions into the largest banks in the country — JPMorgan Chase, Bank of America, Citigroup, Goldman Sachs. The argument was simple: if these banks failed, every business, family, and institution that depended on credit would be cut off instantly. The damage would be catastrophic.</p>
+  <p>Critics made a different argument. The banks had taken enormous risks knowing that if things went wrong, they were too big to be allowed to fail. Economists called this "moral hazard" — the idea that rescuing bad decisions teaches institutions to keep making them. The people who caused the crash got rescued. The people who lost their homes did not.</p>
+
+  <div class="cartoon-box">
+    <img src="images/tarp_wallstreet.jpg" alt="Wall Street sign during the financial crisis">
+    <div class="cartoon-caption">Wall Street became the symbol of the financial crisis. To many Americans, the bailout showed how quickly government could move when major financial institutions were at risk.</div>
+  </div>
+
+  <div class="rule-thin"></div>
+
+  <div class="section-label">The Seen and The Unseen</div>
+  <h2>Who the Bailout Rescued</h2>
+
+  <div class="two-col">
+    <div class="col-seen">
+      <h3>What the Government Claims</h3>
+      <p>The banking system did not collapse. Credit markets eventually reopened. The U.S. economy did not enter a second Great Depression. By the government's own accounting, TARP ultimately cost taxpayers about $31 billion — far less than the $700 billion ceiling — because much of the money was paid back with interest.</p>
+      <p>The government argues that without TARP, the economic damage would have been ten times worse for ordinary Americans.</p>
+    </div>
+    <div class="col-unseen">
+      <h3>Who Paid the Price Anyway</h3>
+      <p>Eight million Americans lost their jobs. Nearly four million families lost their homes to foreclosure in 2010 alone. The government never created a comparable rescue program for homeowners — only for banks. Executive bonuses at bailed-out banks continued. No senior bank executive went to prison for the decisions that caused the crisis.</p>
+      <p>The national debt grew by trillions. Communities of color lost generational wealth at rates far higher than white communities and have never fully recovered.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="vocab-strip">
+  <div class="container" style="padding-top:0;padding-bottom:0">
+    <div class="section-label">Term Bank</div>
+    <h2>Key Terms for This Event</h2>
+    <div class="vocab-grid">
+      <div class="vocab-item">
+        <div class="vocab-term">Expansionary Fiscal Policy</div>
+        <div class="vocab-def">Government action to inject money into a contracting economy. TARP was expansionary — the government spent to prevent total economic collapse.</div>
+      </div>
+      <div class="vocab-item">
+        <div class="vocab-term">National Debt</div>
+        <div class="vocab-def">The total accumulated amount the government owes. TARP added to the national debt even though much of it was eventually repaid.</div>
+      </div>
+      <div class="vocab-item">
+        <div class="vocab-term">Budget Deficit</div>
+        <div class="vocab-def">Government spends more than it collects in taxes. The 2008 crisis pushed the annual deficit to nearly 10 percent of GDP — the largest since World War II.</div>
+      </div>
+      <div class="vocab-item">
+        <div class="vocab-term">Multiplier Effect</div>
+        <div class="vocab-def">Government spending generates more economic activity than the original dollar. TARP's critics argued the multiplier was minimal because bank bailout money sat in reserves rather than circulating into the economy.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--asphalt:#1c1f24;
+--white:#f8f9fa;
+--yellow:#f5c518;
+--green:#2d5a1b;
+--lightgreen:#4a8c2a;
+--gray:#8a9099;
+--lightgray:#e8eaed;
+--cream:#fafaf7;
+--red:#c0392b;
+}
+body{background:var(--cream);color:var(--asphalt);font-family:'Barlow',sans-serif;font-size:17px;line-height:1.7}
+
+/* HERO */
+.hero{background:var(--asphalt);position:relative;overflow:hidden;min-height:500px;display:grid;grid-template-columns:1fr 1fr}
+.hero-text{padding:3.5rem;display:flex;flex-direction:column;justify-content:center;z-index:2;position:relative}
+.hero-text::before{content:'';position:absolute;top:50%;left:0;right:0;height:3px;background:var(--yellow);opacity:0.15}
+.kicker{font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:0.18em;color:var(--yellow);margin-bottom:1.2rem}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,6vw,5.5rem);color:var(--white);line-height:0.95;letter-spacing:0.02em;margin-bottom:1rem}
+h1 em{color:var(--yellow);font-style:normal}
+.hero-sub{font-size:1rem;color:rgba(248,249,250,0.75);line-height:1.65;max-width:380px;font-weight:300}
+.dateline{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:0.12em;color:var(--gray);margin-top:1.5rem}
+.hero-img{position:relative;overflow:hidden}
+.hero-img img{width:100%;height:100%;object-fit:cover;opacity:0.7}
+.hero-img::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--asphalt) 0%,transparent 40%);z-index:1}
+
+/* ROAD STRIPE */
+.road-stripe{height:12px;background:var(--asphalt);position:relative;display:flex;align-items:center;justify-content:center;gap:20px;overflow:hidden}
+.road-stripe::before{content:'';position:absolute;top:50%;left:0;right:0;height:2px;background:var(--yellow);transform:translateY(-50%)}
+
+/* CONTAINER */
+.container{max-width:900px;margin:0 auto;padding:2.5rem 2rem}
+.section-label{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--green);margin-bottom:0.5rem}
+h2{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.03em;color:var(--asphalt);margin-bottom:0.9rem}
+h3{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.03em;margin-bottom:0.5rem}
+p{margin-bottom:1rem}
+.lede{font-size:1.1rem;font-weight:300;color:#3a4050;margin-bottom:1.25rem;line-height:1.7}
+
+/* PULL QUOTE */
+.pull-quote{border-left:5px solid var(--yellow);padding:1rem 1.5rem;margin:2rem 0;background:var(--asphalt)}
+.pull-quote p{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.03em;color:var(--white);line-height:1.2}
+.pull-quote cite{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--gray);display:block;margin-top:0.5rem}
+
+/* STATS */
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0}
+.stat-box{background:var(--asphalt);color:var(--white);padding:1.25rem;border-top:4px solid var(--yellow)}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:0.03em;color:var(--yellow);line-height:1}
+.stat-label{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:0.08em;color:var(--gray);margin-top:0.3rem;line-height:1.4}
+
+/* PHOTOS */
+.photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}
+.photo-grid.three{grid-template-columns:1fr 1fr 1fr}
+.photo-item img{width:100%;height:210px;object-fit:cover;display:block}
+.photo-caption{font-family:'Roboto Mono',monospace;font-size:10px;color:var(--gray);padding:0.4rem 0.5rem;background:var(--lightgray);line-height:1.4}
+
+/* SEEN/UNSEEN */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0}
+.col-seen{border-top:4px solid var(--green);padding:1.25rem 1.5rem;background:rgba(45,90,27,0.06)}
+.col-seen h3{color:var(--green)}
+.col-unseen{border-top:4px solid var(--red);padding:1.25rem 1.5rem;background:var(--asphalt)}
+.col-unseen h3{color:var(--yellow)}
+.col-unseen p{color:rgba(248,249,250,0.82);font-size:0.95rem}
+.col-seen p{font-size:0.95rem}
+
+/* SIGN */
+.highway-sign{background:var(--green);color:var(--white);border:4px solid var(--white);outline:4px solid var(--green);padding:0.75rem 1.5rem;text-align:center;margin:2rem auto;max-width:280px;display:block}
+.highway-sign .sign-top{font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:0.15em}
+.highway-sign .sign-num{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;line-height:1}
+.highway-sign .sign-bottom{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:0.1em}
+
+/* CARTOON */
+.cartoon-box{background:var(--lightgray);padding:1.25rem;margin:2rem 0}
+.cartoon-box img{width:100%;max-height:320px;object-fit:contain;display:block}
+.cartoon-caption{font-family:'Roboto Mono',monospace;font-size:10px;color:var(--gray);margin-top:0.6rem;line-height:1.4}
+
+.rule-thin{height:1px;background:var(--lightgray);margin:2rem 0}
+
+/* VOCAB */
+.vocab-strip{background:var(--asphalt);color:var(--white);padding:1.75rem 2rem;margin-top:2rem}
+.vocab-strip .section-label{color:var(--yellow)}
+.vocab-strip h2{color:var(--white);font-size:1.5rem;margin-bottom:1.25rem}
+.vocab-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+.vocab-item{border-left:3px solid var(--yellow);padding-left:0.75rem}
+.vocab-term{font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--yellow)}
+.vocab-def{font-size:0.88rem;color:rgba(248,249,250,0.8);margin-top:0.2rem;line-height:1.5}
+
+@media(max-width:650px){
+  .hero{grid-template-columns:1fr}
+  .hero-img{display:none}
+  .two-col,.photo-grid,.photo-grid.three,.stat-row,.vocab-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-text">
+    <div class="kicker">The Play Call — Event 2 of 4</div>
+    <h1>The Interstate <em>Highway</em> Act</h1>
+    <p class="hero-sub">Eisenhower spent $25 billion to connect a nation. The highways are still here. So are the neighborhoods they destroyed.</p>
+    <div class="dateline">United States · 1956 · Expansionary Fiscal Policy</div>
+  </div>
+  <div class="hero-img">
+    <img src="images/interstate_highway.jpg" alt="Interstate highway aerial view">
+  </div>
+</div>
+<div class="road-stripe"></div>
+
+<div class="container">
+
+  <div class="section-label">The Setup</div>
+  <h2>A Country Too Big to Drive Across</h2>
+  <p class="lede">In 1956, there was no efficient way to drive from one end of the United States to the other. Roads were narrow, slow, and disconnected. Dwight Eisenhower had seen Germany's autobahn during World War II — and he wanted one for America.</p>
+  <p>But Eisenhower's argument was not just about convenience. It was about national defense. If the Soviet Union attacked, the military would need to move troops and equipment across the country quickly. The existing road system could not handle it. A national highway network was a military necessity — and a massive economic opportunity.</p>
+  <p>Congress passed the Federal Aid Highway Act in June 1956. The federal government would pay 90 percent of the cost. States would cover the remaining 10 percent. The total bill was $25 billion — the largest public works project in American history at that point.</p>
+
+  <div class="pull-quote">
+    <p>"The amount of concrete to be used would build six sidewalks to the moon."</p>
+    <cite>— Popular description of the Interstate Highway System's scale, 1956</cite>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <div class="stat-num">41,000</div>
+      <div class="stat-label">Miles of interstate highway built across the U.S.</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">$25B</div>
+      <div class="stat-label">Original cost — roughly $280 billion in today's dollars</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">35 yrs</div>
+      <div class="stat-label">Time it took to complete the full system</div>
+    </div>
+  </div>
+
+  <div class="photo-grid">
+    <div class="photo-item">
+      <img src="images/eisenhower.jpg" alt="President Eisenhower official portrait">
+      <div class="photo-caption">President Dwight D. Eisenhower signed the Federal Aid Highway Act on June 29, 1956.</div>
+    </div>
+    <div class="photo-item">
+      <img src="images/highway_construction.jpg" alt="Highway construction 1959">
+      <div class="photo-caption">Highway construction crews at work, late 1950s. Hundreds of thousands of workers were employed building the system.</div>
+    </div>
+  </div>
+
+  <div class="rule-thin"></div>
+
+  <div class="section-label">The Intervention</div>
+  <h2>The Dollar That Kept Moving</h2>
+
+  <div class="highway-sign">
+    <div class="sign-top">INTERSTATE</div>
+    <div class="sign-num">1956</div>
+    <div class="sign-bottom">FEDERAL AID HIGHWAY ACT</div>
+  </div>
+
+  <p>Every dollar the federal government spent on highway construction moved through the economy in ways that multiplied the original investment. Construction workers earned wages and spent them locally. Steel companies filled massive orders. Concrete manufacturers ran at full capacity. Trucking companies formed to use the new roads. Motels, gas stations, and fast food restaurants built themselves along every exit.</p>
+  <p>The highways did not just connect cities. They created entirely new economic geography. Suburbs expanded outward along the new roads. Shopping malls replaced downtown stores. The automobile economy grew into the dominant force in American life — and it was built on a foundation of government spending.</p>
+  <p>This is the multiplier effect at a national scale. One government investment in infrastructure reshaped where Americans lived, worked, shopped, and built businesses for the next seven decades.</p>
+
+  <div class="rule-thin"></div>
+
+  <div class="section-label">The Seen and The Unseen</div>
+  <h2>Who the Highways Helped — and Who They Hurt</h2>
+
+  <div class="two-col">
+    <div class="col-seen">
+      <h3>What Everyone Could See</h3>
+      <p>The interstate system connected the country in ways that transformed everyday life. Travel times dropped dramatically. Goods moved cheaper and faster. American manufacturing reached national markets that were impossible to access before. The trucking industry alone grew into a multi-billion dollar sector of the economy.</p>
+      <p>Military logistics improved exactly as Eisenhower intended. The system is still in use today — almost 70 years later.</p>
+    </div>
+    <div class="col-unseen">
+      <h3>What Was Harder to See</h3>
+      <p>Highway planners deliberately routed interstates through Black and low-income neighborhoods in cities across the country. In city after city, vibrant communities were demolished to make room for the roads that connected wealthier suburbs to downtown business districts.</p>
+      <p>In Los Angeles, in Miami, in New Orleans, in San Diego — entire neighborhoods were cut in half or erased entirely. The people displaced by construction rarely received fair compensation. The highways that built the suburbs destroyed the urban communities they ran through.</p>
+    </div>
+  </div>
+
+  <div class="photo-grid three">
+    <div class="photo-item">
+      <img src="images/interstate_highway.jpg" alt="Interstate highway aerial view">
+      <div class="photo-caption">A major interstate highway shows how federal infrastructure connected regions while also reshaping local communities.</div>
+    </div>
+    <div class="photo-item">
+      <img src="images/eisenhower.jpg" alt="President Eisenhower official portrait">
+      <div class="photo-caption">President Eisenhower promoted the highway system as a national defense project and a major public investment.</div>
+    </div>
+    <div class="photo-item">
+      <img src="images/highway_construction.jpg" alt="Highway construction 1959">
+      <div class="photo-caption">Highway construction reshaped cities and often cut through existing neighborhoods.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="vocab-strip">
+  <div class="container" style="padding-top:0;padding-bottom:0">
+    <div class="section-label">Term Bank</div>
+    <h2>Key Terms for This Event</h2>
+    <div class="vocab-grid">
+      <div class="vocab-item">
+        <div class="vocab-term">Fiscal Policy</div>
+        <div class="vocab-def">The government's use of spending and taxation to shape the economy. The Highway Act was pure government spending — no tax cuts, no transfers — just construction.</div>
+      </div>
+      <div class="vocab-item">
+        <div class="vocab-term">Multiplier Effect</div>
+        <div class="vocab-def">One dollar of government spending generates more than one dollar of economic activity. The highways created entire industries that did not exist before the roads were built.</div>
+      </div>
+      <div class="vocab-item">
+        <div class="vocab-term">Budget Deficit</div>
+        <div class="vocab-def">Government spends more than it collects in taxes. The Highway Act was funded largely through a dedicated gas tax — making it one of the few major infrastructure investments that paid for itself over time.</div>
+      </div>
+      <div class="vocab-item">
+        <div class="vocab-term">Expansionary Fiscal Policy</div>
+        <div class="vocab-def">Government action that injects money into the economy to stimulate growth. The Highway Act employed hundreds of thousands of workers during a period of peacetime economic expansion.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
