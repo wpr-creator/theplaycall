@@ -154,9 +154,44 @@ h2{
 @media(max-width:700px){
   .genre-grid{grid-template-columns:1fr}
 }
+
+/* ── SITE NAV ── */
+.site-nav{background:#0f0e0c;border-bottom:3px solid #b8390e;position:sticky;top:0;z-index:999}
+.site-nav-inner{max-width:900px;margin:0 auto;padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem}
+.nav-home{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#c4880a;text-decoration:none;font-weight:700}
+.nav-home:hover{color:#f5c518}
+.nav-links{display:flex;gap:1.25rem;flex-wrap:wrap}
+.nav-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;color:rgba(250,247,240,0.65);text-decoration:none;text-transform:uppercase}
+.nav-links a:hover{color:#c4880a}
+@media(max-width:500px){.site-nav-inner{flex-direction:column;align-items:flex-start}.nav-links{gap:0.75rem}}
+
+/* ── TERM BANK STRIP ── */
+.term-bank-strip{background:#0f0e0c;color:#faf7f0;padding:2rem 2rem;margin-top:2.5rem}
+.term-bank-inner{max-width:900px;margin:0 auto}
+.tb-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#c4880a;margin-bottom:0.5rem}
+.term-bank-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;margin-top:0.75rem}
+.tb-item{border-left:2px solid rgba(196,136,10,0.5);padding-left:0.75rem}
+.tb-name{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:#c4880a;line-height:1.4}
+.tb-def{font-size:0.8rem;color:rgba(250,247,240,0.72);margin-top:0.25rem;line-height:1.45}
+@media(max-width:640px){.term-bank-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:400px){.term-bank-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="nav-home">&#8592; The Play Call</a>
+    <div class="nav-links">
+      <a href="new_deal.html">New Deal</a>
+      <a href="highway.html">Highway Act</a>
+      <a href="tarp.html">TARP</a>
+      <a href="cares.html">CARES Act</a>
+      <a href="writing_guide.html">Writing Guide</a>
+    </div>
+  </div>
+</nav>
+
 
 <div class="header">
   <div class="kicker">The Play Call · Writing Guide</div>
@@ -230,8 +265,25 @@ h2{
     <p>Your terms should carry meaning. Do not just drop them into a sentence. Use them to explain the policy, the benefit, or the cost.</p>
   </div>
 
-  <a class="back-link" href="index.html">← Back to The Play Call</a>
+  
 
+</div>
+
+
+<div class="term-bank-strip">
+  <div class="term-bank-inner">
+    <div class="tb-label">Term Bank</div>
+    <div class="term-bank-grid">
+      <div class="tb-item"><div class="tb-name">Fiscal Policy</div><div class="tb-def">Government use of taxing and spending to influence the economy</div></div>
+      <div class="tb-item"><div class="tb-name">Expansionary Fiscal Policy</div><div class="tb-def">Government action to stimulate a slowing economy by increasing spending or cutting taxes</div></div>
+      <div class="tb-item"><div class="tb-name">Contractionary Fiscal Policy</div><div class="tb-def">Government action to slow an overheating economy by cutting spending or raising taxes</div></div>
+      <div class="tb-item"><div class="tb-name">Multiplier Effect</div><div class="tb-def">Initial government spending generates a larger total increase in economic output</div></div>
+      <div class="tb-item"><div class="tb-name">Progressive Tax</div><div class="tb-def">Higher earners pay a larger percentage of their income</div></div>
+      <div class="tb-item"><div class="tb-name">Regressive Tax</div><div class="tb-def">Lower earners pay a higher share of income in practice — same rate, higher real burden</div></div>
+      <div class="tb-item"><div class="tb-name">Budget Deficit</div><div class="tb-def">Government spends more in a year than it collects in tax revenue</div></div>
+      <div class="tb-item"><div class="tb-name">National Debt</div><div class="tb-def">Total accumulated amount the federal government owes from deficit spending</div></div>
+    </div>
+  </div>
 </div>
 
 </body>

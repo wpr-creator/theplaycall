@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Roboto+Mono:wght@400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -98,9 +98,34 @@ p{margin-bottom:1rem}
   .hero-img{display:none}
   .two-col,.photo-grid,.photo-grid.three,.stat-row,.vocab-grid{grid-template-columns:1fr}
 }
+
+/* ── SITE NAV ── */
+.site-nav{background:#0f0e0c;border-bottom:3px solid #b8390e;position:sticky;top:0;z-index:999}
+.site-nav-inner{max-width:900px;margin:0 auto;padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem}
+.nav-home{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#c4880a;text-decoration:none;font-weight:700}
+.nav-home:hover{color:#f5c518}
+.nav-links{display:flex;gap:1.25rem;flex-wrap:wrap}
+.nav-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;color:rgba(250,247,240,0.65);text-decoration:none;text-transform:uppercase}
+.nav-links a:hover{color:#c4880a}
+@media(max-width:500px){.site-nav-inner{flex-direction:column;align-items:flex-start}.nav-links{gap:0.75rem}}
+@media(max-width:640px){.stat-row{grid-template-columns:1fr!important}}
 </style>
+<title>The Interstate Highway Act — The Play Call</title>
 </head>
 <body>
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="nav-home">&#8592; The Play Call</a>
+    <div class="nav-links">
+      <a href="new_deal.html">New Deal</a>
+      <a href="highway.html">Highway Act</a>
+      <a href="tarp.html">TARP</a>
+      <a href="cares.html">CARES Act</a>
+      <a href="writing_guide.html">Writing Guide</a>
+    </div>
+  </div>
+</nav>
+
 
 <div class="hero">
   <div class="hero-text">
@@ -190,11 +215,11 @@ p{margin-bottom:1rem}
   <div class="photo-grid three">
     <div class="photo-item">
       <img src="images/interstate_highway.jpg" alt="Interstate highway aerial view">
-      <div class="photo-caption">A major interstate highway shows how federal infrastructure connected regions while also reshaping local communities.</div>
+      <div class="photo-caption">Interstate 10 in Los Angeles — built through neighborhoods that had no voice in the planning process.</div>
     </div>
     <div class="photo-item">
       <img src="images/eisenhower.jpg" alt="President Eisenhower official portrait">
-      <div class="photo-caption">President Eisenhower promoted the highway system as a national defense project and a major public investment.</div>
+      <div class="photo-caption">President Eisenhower signs the Federal Aid Highway Act on June 29, 1956 — framing it as a national security investment as much as an economic one.</div>
     </div>
     <div class="photo-item">
       <img src="images/highway_construction.jpg" alt="Highway construction 1959">

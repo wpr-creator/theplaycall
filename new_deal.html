@@ -92,9 +92,34 @@ p{margin-bottom:1rem}
   .masthead-img{display:none}
   .two-col,.photo-grid,.photo-grid.three,.stat-row,.vocab-grid{grid-template-columns:1fr}
 }
+
+/* ── SITE NAV ── */
+.site-nav{background:#0f0e0c;border-bottom:3px solid #b8390e;position:sticky;top:0;z-index:999}
+.site-nav-inner{max-width:900px;margin:0 auto;padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem}
+.nav-home{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#c4880a;text-decoration:none;font-weight:700}
+.nav-home:hover{color:#f5c518}
+.nav-links{display:flex;gap:1.25rem;flex-wrap:wrap}
+.nav-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;color:rgba(250,247,240,0.65);text-decoration:none;text-transform:uppercase}
+.nav-links a:hover{color:#c4880a}
+@media(max-width:500px){.site-nav-inner{flex-direction:column;align-items:flex-start}.nav-links{gap:0.75rem}}
+@media(max-width:640px){.stat-row{grid-template-columns:1fr!important}}
 </style>
+<title>The New Deal — The Play Call</title>
 </head>
 <body>
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="nav-home">&#8592; The Play Call</a>
+    <div class="nav-links">
+      <a href="new_deal.html">New Deal</a>
+      <a href="highway.html">Highway Act</a>
+      <a href="tarp.html">TARP</a>
+      <a href="cares.html">CARES Act</a>
+      <a href="writing_guide.html">Writing Guide</a>
+    </div>
+  </div>
+</nav>
+
 
 <div class="masthead">
   <div class="masthead-inner">
@@ -176,11 +201,11 @@ p{margin-bottom:1rem}
   <div class="rule-thin"></div>
 
   <div class="section-label">The Political Cartoon</div>
-  <h2>What People Thought</h2>
+  <h2>What People Made of It</h2>
 
   <div class="cartoon-box">
     <img src="images/wpa_art.jpg" alt="WPA Federal Art Project poster">
-    <div class="cartoon-caption">WPA Federal Art Project poster. New Deal programs did not only fund roads and parks; they also funded public art, education, and culture as part of the government response to the Depression.</div>
+    <div class="cartoon-caption">WPA Federal Art Project poster, 1930s. The government funded over 200,000 public art works through the WPA — murals, posters, sculptures, and photographs that documented American life during the Depression. Some Americans celebrated this investment. Others called it wasteful government overreach.</div>
   </div>
 
   <p>Not everyone celebrated. Business owners argued the government had no right to interfere with the market. Conservative politicians called Roosevelt a socialist. The Supreme Court struck down several New Deal programs as unconstitutional. Roosevelt responded by threatening to add new justices to the Court — a move that alarmed even his supporters.</p>

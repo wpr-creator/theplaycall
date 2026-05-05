@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Nunito:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Nunito:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -38,7 +38,7 @@ h1 em{color:#60a5fa;font-style:normal}
 
 /* ALERT BANNER */
 .alert{background:var(--sky);color:var(--white);padding:0.65rem 2rem;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.08em;display:flex;align-items:center;gap:1rem}
-.alert-dot{width:8px;height:8px;background:var(--white);border-radius:50%;flex-shrink:0;animation:pulse 1.5s ease-in-out infinite}
+.alert-dot{width:8px;height:8px;background:var(--white);border-radius:50%;flex-shrink:0;animation:pulse 1.5s ease-in-out infinite;will-change:opacity}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
 
 /* CONTAINER */
@@ -111,9 +111,34 @@ p{margin-bottom:1rem}
   .hero-right{display:none}
   .two-col,.photo-grid,.photo-grid.three,.stat-row,.vocab-grid,.compare{grid-template-columns:1fr}
 }
+
+/* ── SITE NAV ── */
+.site-nav{background:#0f0e0c;border-bottom:3px solid #b8390e;position:sticky;top:0;z-index:999}
+.site-nav-inner{max-width:900px;margin:0 auto;padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem}
+.nav-home{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#c4880a;text-decoration:none;font-weight:700}
+.nav-home:hover{color:#f5c518}
+.nav-links{display:flex;gap:1.25rem;flex-wrap:wrap}
+.nav-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;color:rgba(250,247,240,0.65);text-decoration:none;text-transform:uppercase}
+.nav-links a:hover{color:#c4880a}
+@media(max-width:500px){.site-nav-inner{flex-direction:column;align-items:flex-start}.nav-links{gap:0.75rem}}
+@media(max-width:640px){.stat-row{grid-template-columns:1fr!important}}
 </style>
+<title>The CARES Act — The Play Call</title>
 </head>
 <body>
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="nav-home">&#8592; The Play Call</a>
+    <div class="nav-links">
+      <a href="new_deal.html">New Deal</a>
+      <a href="highway.html">Highway Act</a>
+      <a href="tarp.html">TARP</a>
+      <a href="cares.html">CARES Act</a>
+      <a href="writing_guide.html">Writing Guide</a>
+    </div>
+  </div>
+</nav>
+
 
 <div class="hero">
   <div class="hero-text">
