@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Play Call — Writing Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#0f0e0c;
+  --paper:#f5f0e8;
+  --cream:#faf7f0;
+  --accent:#c4880a;
+  --rust:#b8390e;
+  --mid:#6b5a3e;
+  --light:#e8dfc8;
+  --white:#f8fafc;
+}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Source Serif 4',serif;
+  font-size:17px;
+  line-height:1.7;
+}
+.header{
+  background:var(--ink);
+  color:var(--cream);
+  padding:4rem 2rem;
+  text-align:center;
+}
+.kicker{
+  font-family:'DM Mono',monospace;
+  font-size:11px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:1rem;
+}
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3rem,7vw,5.5rem);
+  line-height:0.95;
+  margin-bottom:1rem;
+}
+.header p{
+  max-width:700px;
+  margin:0 auto;
+  color:rgba(250,247,240,0.78);
+  font-size:1.05rem;
+}
+.rule{height:5px;background:var(--rust)}
+.container{
+  max-width:1000px;
+  margin:0 auto;
+  padding:3rem 2rem;
+}
+.intro{
+  background:var(--cream);
+  border:1px solid var(--light);
+  padding:1.5rem;
+  margin-bottom:2rem;
+}
+.intro strong{color:var(--rust)}
+.section-label{
+  font-family:'DM Mono',monospace;
+  font-size:10px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--rust);
+  margin-bottom:0.5rem;
+}
+h2{
+  font-family:'Playfair Display',serif;
+  font-size:1.8rem;
+  margin-bottom:1rem;
+}
+.genre-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.5rem;
+}
+.genre-card{
+  background:var(--cream);
+  border:1px solid var(--light);
+  border-top:5px solid var(--accent);
+  padding:1.5rem;
+}
+.genre-card.analytical{border-top-color:var(--rust)}
+.genre-type{
+  font-family:'DM Mono',monospace;
+  font-size:10px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--mid);
+  margin-bottom:0.4rem;
+}
+.genre-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;
+  font-weight:700;
+  margin-bottom:0.6rem;
+}
+.genre-desc{
+  color:var(--mid);
+  font-size:0.95rem;
+  margin-bottom:1rem;
+}
+.paragraphs{
+  display:grid;
+  gap:0.75rem;
+}
+.para-box{
+  background:rgba(255,255,255,0.55);
+  border-left:4px solid var(--accent);
+  padding:0.85rem 1rem;
+}
+.analytical .para-box{border-left-color:var(--rust)}
+.para-box strong{
+  font-family:'DM Mono',monospace;
+  font-size:10px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--rust);
+  display:block;
+  margin-bottom:0.2rem;
+}
+.para-box span{
+  font-size:0.92rem;
+  color:var(--ink);
+}
+.footer-note{
+  margin-top:2rem;
+  background:var(--ink);
+  color:var(--cream);
+  padding:1.5rem;
+}
+.footer-note p{
+  color:rgba(250,247,240,0.82);
+  margin-bottom:0.5rem;
+}
+.footer-note strong{color:var(--accent)}
+.back-link{
+  display:inline-block;
+  margin-top:1.5rem;
+  font-family:'DM Mono',monospace;
+  font-size:11px;
+  letter-spacing:0.1em;
+  color:var(--rust);
+  text-decoration:none;
+  border-bottom:1px solid var(--rust);
+}
+@media(max-width:700px){
+  .genre-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="kicker">The Play Call · Writing Guide</div>
+  <h1>Choose Your Voice</h1>
+  <p>For this assignment, you will write about the same fiscal policy event in two different ways: one creative piece and one analytical piece.</p>
+</div>
+<div class="rule"></div>
+
+<div class="container">
+
+  <div class="intro">
+    <div class="section-label">Your Task</div>
+    <h2>One Event. Two Writing Styles.</h2>
+    <p>Choose <strong>ONE creative style</strong> and <strong>ONE analytical style</strong>. Both pieces must focus on the same event from <em>The Play Call</em> website. Each piece should be <strong>four paragraphs</strong> and should explain how the policy worked, who benefited, and who paid the cost.</p>
+  </div>
+
+  <div class="genre-grid">
+
+    <div class="genre-card">
+      <div class="genre-type">Creative Choice</div>
+      <div class="genre-title">Fiction</div>
+      <p class="genre-desc">Write a realistic scene with a character living through the policy. Show the impact through their experience.</p>
+      <div class="paragraphs">
+        <div class="para-box"><strong>Paragraph 1</strong><span>Set the scene. Who is your character? Where are they?</span></div>
+        <div class="para-box"><strong>Paragraph 2</strong><span>Show the policy in action. What changes around them?</span></div>
+        <div class="para-box"><strong>Paragraph 3</strong><span>Reveal the impact. How does the policy help or hurt them?</span></div>
+        <div class="para-box"><strong>Paragraph 4</strong><span>Connect to the bigger idea. Who wins, and who pays?</span></div>
+      </div>
+    </div>
+
+    <div class="genre-card">
+      <div class="genre-type">Creative Choice</div>
+      <div class="genre-title">Satire</div>
+      <p class="genre-desc">Use humor, exaggeration, or irony to reveal something unfair or absurd about the policy.</p>
+      <div class="paragraphs">
+        <div class="para-box"><strong>Paragraph 1</strong><span>Introduce the fake situation, speech, ad, or scene.</span></div>
+        <div class="para-box"><strong>Paragraph 2</strong><span>Exaggerate who benefits from the policy.</span></div>
+        <div class="para-box"><strong>Paragraph 3</strong><span>Expose the hidden cost or unfair outcome.</span></div>
+        <div class="para-box"><strong>Paragraph 4</strong><span>Make the point clear through irony or contrast.</span></div>
+      </div>
+    </div>
+
+    <div class="genre-card analytical">
+      <div class="genre-type">Analytical Choice</div>
+      <div class="genre-title">Informative</div>
+      <p class="genre-desc">Explain how the policy worked and what it cost. Stay neutral and focus on clear explanation.</p>
+      <div class="paragraphs">
+        <div class="para-box"><strong>Paragraph 1</strong><span>Explain the crisis or problem the government faced.</span></div>
+        <div class="para-box"><strong>Paragraph 2</strong><span>Explain what the government did using fiscal policy.</span></div>
+        <div class="para-box"><strong>Paragraph 3</strong><span>Explain the seen benefit and who gained from it.</span></div>
+        <div class="para-box"><strong>Paragraph 4</strong><span>Explain the hidden cost and who paid for it.</span></div>
+      </div>
+    </div>
+
+    <div class="genre-card analytical">
+      <div class="genre-type">Analytical Choice</div>
+      <div class="genre-title">Argument</div>
+      <p class="genre-desc">Take a position on whether the intervention was worth it and defend your claim with evidence.</p>
+      <div class="paragraphs">
+        <div class="para-box"><strong>Paragraph 1</strong><span>State your claim: was the policy worth it or not?</span></div>
+        <div class="para-box"><strong>Paragraph 2</strong><span>Use evidence to explain the strongest benefit.</span></div>
+        <div class="para-box"><strong>Paragraph 3</strong><span>Use evidence to explain the biggest cost.</span></div>
+        <div class="para-box"><strong>Paragraph 4</strong><span>Defend your final judgment: did the benefit outweigh the cost?</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-note">
+    <p><strong>Vocabulary Requirement:</strong> Use at least two lesson terms in each writing piece.</p>
+    <p>Your terms should carry meaning. Do not just drop them into a sentence. Use them to explain the policy, the benefit, or the cost.</p>
+  </div>
+
+  <a class="back-link" href="index.html">← Back to The Play Call</a>
+
+</div>
+
+</body>
+</html>

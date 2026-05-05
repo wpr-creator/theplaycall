@@ -134,84 +134,43 @@ body{
 /* ── RULE ── */
 .top-rule{height:5px;background:var(--rust)}
 
-/* ── INTRO STRIP ── */
-.intro-strip{
-  background:var(--cream);
-  border-bottom:1px solid var(--light);
-  padding:2rem 2.5rem;
-}
-.intro-inner{
-  max-width:900px;
-  margin:0 auto;
-  display:grid;
-  grid-template-columns:1fr 2fr;
-  gap:2rem;
-  align-items:center;
-}
-.intro-label{
-  font-family:'DM Mono',monospace;
-  font-size:10px;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  color:var(--sepia);
-  margin-bottom:0.5rem;
-}
-.intro-heading{
-  font-family:'Playfair Display',serif;
-  font-size:1.4rem;
-  font-weight:700;
-  color:var(--ink);
-  line-height:1.25;
-}
-.intro-body{
-  font-size:0.97rem;
-  color:var(--mid);
-  line-height:1.7;
-}
-.intro-body strong{
-  color:var(--ink);
-  font-weight:600;
-}
+<!-- INTRO STRIP -->
+<div class="intro-strip">
+  <div class="intro-inner">
+    <div>
+      <div class="intro-label">Assignment Overview</div>
+      <div class="intro-heading">One Event. Two Writing Styles.</div>
+    </div>
+    <p class="intro-body">
+      In <strong>The Play Call</strong>, you will study one real moment when the U.S. government used <strong>fiscal policy</strong> to intervene in the economy. You will write about the same event in <strong>two styles</strong>: one creative piece and one analytical piece. Each piece will be <strong>four paragraphs</strong> and should explain how the policy worked, who benefited, and who paid the cost.
+    </p>
+  </div>
+</div>
 
-/* ── TASK STRIP ── */
-.task-strip{
-  background:var(--ink);
-  color:var(--cream);
-  padding:1.5rem 2.5rem;
-}
-.task-inner{
-  max-width:900px;
-  margin:0 auto;
-  display:flex;
-  align-items:center;
-  gap:2rem;
-  flex-wrap:wrap;
-}
-.task-step{
-  display:flex;
-  align-items:center;
-  gap:0.75rem;
-  font-size:0.92rem;
-  color:rgba(250,247,240,0.82);
-}
-.task-num{
-  font-family:'DM Mono',monospace;
-  font-size:11px;
-  width:24px;
-  height:24px;
-  border:1px solid var(--accent);
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:var(--accent);
-  flex-shrink:0;
-}
-.task-arrow{
-  font-family:'DM Mono',monospace;
-  font-size:16px;
-  color:rgba(196,136,10,0.4);
-}
+<!-- TASK STRIP -->
+<div class="task-strip">
+  <div class="task-inner">
+    <div class="task-step">
+      <div class="task-num">1</div>
+      <span>Open the <a href="writing_guide.html" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);">Writing Guide</a></span>
+    </div>
+    <div class="task-arrow">→</div>
+    <div class="task-step">
+      <div class="task-num">2</div>
+      <span>Choose one creative style and one analytical style</span>
+    </div>
+    <div class="task-arrow">→</div>
+    <div class="task-step">
+      <div class="task-num">3</div>
+      <span>Choose one event below and read it fully</span>
+    </div>
+    <div class="task-arrow">→</div>
+    <div class="task-step">
+      <div class="task-num">4</div>
+      <span>Write four paragraphs for each style in your Google Doc</span>
+    </div>
+  </div>
+</div>
 
 /* ── CARDS GRID ── */
 .cards-section{
