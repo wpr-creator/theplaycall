@@ -25,13 +25,13 @@ body{
   background:var(--paper);
   color:var(--ink);
   font-family:'Source Serif 4',serif;
-  line-height:1.7;
+  line-height:1.75;
 }
 
 /* MASTHEAD */
 .masthead{
   position:relative;
-  min-height:550px;
+  min-height:580px;
   display:flex;
   align-items:center;
   color:var(--cream);
@@ -42,7 +42,7 @@ body{
   position:absolute;
   inset:0;
   background:
-    linear-gradient(to right, rgba(15,14,12,0.9), rgba(15,14,12,0.6)),
+    linear-gradient(to right, rgba(15,14,12,0.95), rgba(15,14,12,0.7)),
     url("images/uncle_sam_play.jpg");
   background-size:cover;
   background-position:center;
@@ -54,24 +54,28 @@ body{
   z-index:2;
   max-width:900px;
   margin:auto;
-  padding:3rem;
+  padding:4rem 2.5rem;
 }
 
 .masthead h1{
   font-family:'Playfair Display',serif;
-  font-size:4rem;
-  margin-bottom:1rem;
+  font-size:clamp(4rem,9vw,7.5rem);
+  font-weight:900;
+  line-height:0.9;
+  letter-spacing:-0.02em;
 }
 
 .masthead-desc{
+  margin-top:1.5rem;
+  font-size:1.1rem;
   font-style:italic;
-  color:#ddd;
+  color:rgba(250,247,240,0.8);
 }
 
 /* INTRO */
 .intro-strip{
   background:var(--cream);
-  padding:2rem;
+  padding:2rem 2.5rem;
 }
 
 .intro-inner{
@@ -90,22 +94,27 @@ body{
 }
 
 .intro-heading{
-  font-size:1.3rem;
+  font-size:1.4rem;
   font-weight:700;
+}
+
+.intro-body{
+  font-size:0.95rem;
+  color:var(--mid);
 }
 
 /* TASK */
 .task-strip{
   background:var(--ink);
   color:var(--cream);
-  padding:1.5rem;
+  padding:1.5rem 2.5rem;
 }
 
 .task-inner{
   max-width:900px;
   margin:auto;
   display:flex;
-  gap:1.5rem;
+  gap:2rem;
   flex-wrap:wrap;
 }
 
@@ -113,6 +122,7 @@ body{
   display:flex;
   align-items:center;
   gap:0.5rem;
+  font-size:0.9rem;
 }
 
 .task-num{
@@ -124,6 +134,7 @@ body{
   justify-content:center;
   border-radius:50%;
   font-size:12px;
+  color:var(--accent);
 }
 
 .task-step a{
@@ -136,7 +147,7 @@ body{
 .cards-section{
   max-width:900px;
   margin:auto;
-  padding:2rem;
+  padding:3rem 2rem;
 }
 
 .cards-grid{
@@ -153,19 +164,30 @@ body{
 
 .card img{
   width:100%;
-  height:180px;
+  height:200px;
   object-fit:cover;
 }
 
 .card-body{
-  padding:1rem;
+  padding:1.5rem;
+}
+
+.card-title{
+  font-family:'Playfair Display';
+  font-size:1.3rem;
+  margin-bottom:0.5rem;
+}
+
+.card-subtitle{
+  font-size:0.9rem;
+  color:var(--mid);
 }
 
 /* TERMS */
 .term-section{
   background:var(--ink);
   color:var(--cream);
-  padding:2rem;
+  padding:2.5rem;
 }
 
 .term-inner{
@@ -192,16 +214,22 @@ body{
 
 .term-pill-desc{
   font-size:0.8rem;
-  color:#ddd;
+  color:rgba(250,247,240,0.7);
   margin-top:4px;
 }
 
 /* FOOTER */
 .footer{
   text-align:center;
-  padding:1rem;
+  padding:1.5rem;
   font-size:10px;
   color:var(--sepia);
+}
+
+@media(max-width:640px){
+  .cards-grid{grid-template-columns:1fr}
+  .term-grid{grid-template-columns:1fr}
+  .intro-inner{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -212,7 +240,11 @@ body{
 <div class="masthead">
   <div class="masthead-inner">
     <h1>The Play Call</h1>
-    <p class="masthead-desc">Every policy is a choice. Someone benefits. Someone pays.</p>
+    <p class="masthead-desc">
+      Every time the government intervenes in the economy, it makes a decision.
+      Some effects are visible right away. Others take longer to see.
+      Your job is to understand both.
+    </p>
   </div>
 </div>
 
@@ -220,11 +252,11 @@ body{
 <div class="intro-strip">
   <div class="intro-inner">
     <div>
-      <div class="intro-label">Assignment</div>
+      <div class="intro-label">Assignment Overview</div>
       <div class="intro-heading">One Event. Two Writing Styles.</div>
     </div>
-    <p>
-      In <strong>The Play Call</strong>, you will analyze a real moment when the U.S. government intervened in the economy. You will write about the same event in <strong>one creative style</strong> and <strong>one analytical style</strong>. Each response must be <strong>four paragraphs</strong>.
+    <p class="intro-body">
+      In <strong>The Play Call</strong>, you will analyze one real moment when the U.S. government used <strong>fiscal policy</strong> to respond to a problem in the economy. You will write about the same event in <strong>one creative style</strong> and <strong>one analytical style</strong>. Each response must be <strong>four paragraphs</strong>.
     </p>
   </div>
 </div>
@@ -246,32 +278,32 @@ body{
     <a href="new_deal.html" class="card">
       <img src="images/migrant_mother.jpg">
       <div class="card-body">
-        <h3>The New Deal</h3>
-        <p>Massive spending during the Great Depression.</p>
+        <div class="card-title">The New Deal</div>
+        <div class="card-subtitle">Massive government spending during the Great Depression.</div>
       </div>
     </a>
 
     <a href="highway.html" class="card">
       <img src="images/interstate_highway.jpg">
       <div class="card-body">
-        <h3>Interstate Highway Act</h3>
-        <p>Infrastructure that reshaped America.</p>
+        <div class="card-title">Interstate Highway Act</div>
+        <div class="card-subtitle">Infrastructure that reshaped American life.</div>
       </div>
     </a>
 
     <a href="tarp.html" class="card">
       <img src="images/tarp_lehman.jpg">
       <div class="card-body">
-        <h3>TARP Bailout</h3>
-        <p>Banks saved during financial collapse.</p>
+        <div class="card-title">TARP Bailout</div>
+        <div class="card-subtitle">Government rescue during financial crisis.</div>
       </div>
     </a>
 
     <a href="cares.html" class="card">
       <img src="images/cares_covid.jpg">
       <div class="card-body">
-        <h3>CARES Act</h3>
-        <p>Stimulus checks during COVID.</p>
+        <div class="card-title">CARES Act</div>
+        <div class="card-subtitle">Stimulus checks during COVID.</div>
       </div>
     </a>
 
@@ -286,18 +318,17 @@ body{
       <div class="term-pill"><div class="term-pill-name">Fiscal Policy</div><div class="term-pill-desc">Government taxing and spending</div></div>
       <div class="term-pill"><div class="term-pill-name">Expansionary</div><div class="term-pill-desc">Stimulates economy</div></div>
       <div class="term-pill"><div class="term-pill-name">Contractionary</div><div class="term-pill-desc">Slows economy</div></div>
-      <div class="term-pill"><div class="term-pill-name">Multiplier Effect</div><div class="term-pill-desc">Spending grows impact</div></div>
+      <div class="term-pill"><div class="term-pill-name">Multiplier Effect</div><div class="term-pill-desc">Spending multiplies impact</div></div>
       <div class="term-pill"><div class="term-pill-name">Progressive Tax</div><div class="term-pill-desc">Higher earners pay more</div></div>
       <div class="term-pill"><div class="term-pill-name">Regressive Tax</div><div class="term-pill-desc">Lower earners pay more</div></div>
-      <div class="term-pill"><div class="term-pill-name">Budget Deficit</div><div class="term-pill-desc">Spending > revenue</div></div>
+      <div class="term-pill"><div class="term-pill-name">Budget Deficit</div><div class="term-pill-desc">Spending exceeds revenue</div></div>
 
     </div>
   </div>
 </div>
 
-<!-- FOOTER -->
 <div class="footer">
-THE PLAY CALL · CP ECONOMICS
+THE PLAY CALL · CP ECONOMICS · U4 L4
 </div>
 
 </body>
